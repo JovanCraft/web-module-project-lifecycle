@@ -14,16 +14,20 @@ export default class App extends React.Component {
     const { value } = evt.target
     this.setState({ ...this.state, todoNameInput: value })
   }
+
   resetForm = () => {
     this.setState({ ...this.state, todoNameInput: ''})
   }
+
   setAxiosResponseError = err => {
     this.setState({ ...this.state, error: err.response.data.message })
   }
+
   postTodo = () => {
     axios.post(URL, { name: this.state.todoNameInput})
     .then(res => {
-      this.fetchTodos()
+      //this.fetchTodos()
+      this.setState({ ...this.state, todos: this.state.todos.concat(res.data.data) })
       this.resetForm()
 
     })
@@ -33,6 +37,7 @@ export default class App extends React.Component {
     evt.preventDefault()
     this.postTodo()
   }
+
   fetchTodos = () => {
     axios.get(URL)
     .then(res => {
