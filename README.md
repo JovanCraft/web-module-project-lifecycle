@@ -80,3 +80,10 @@ Build all components as class components. Find them inside `frontend/components`
 - Only work on main.
 - Avoid committing broken code, but commit as often as possible
 - Refer to Canvas for additional submission instructions
+
+
+
+
+
+
+
